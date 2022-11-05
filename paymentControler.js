@@ -24,7 +24,7 @@ exports.key = key;
 exports.secret = secret;
 exports.createOrder = (req, res) => {
   console.log("ORders");
-  // const userId = req.params.id;
+  const userId = req.params.id;
   var options = {
     amount: 20000, // amount in the smallest currency unit
     // amount: 100, // amount in the smallest currency unit
@@ -38,11 +38,11 @@ exports.createOrder = (req, res) => {
       });
     }
     orderId = order.id;
-    // const updateUserORder = await orderSchema.findByIdAndUpdate(
-    //   userId,
-    //   { orderCreationId: order.id },
-    //   { new: true }
-    // );
+    const updateUserORder = await orderSchema.findByIdAndUpdate(
+      userId,
+      { orderCreationId: order.id },
+      { new: true }
+    );
 
     console.log(orderId, "<<<< this is order id");
     res.json(order);
