@@ -12,6 +12,7 @@ const orderSchema = new mongoose.Schema(
     name: String,
     dob: String,
     father: String,
+    appearDistrict: String,
     address: String,
     email: String,
     mobile: Number,
