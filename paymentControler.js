@@ -87,9 +87,16 @@ exports.paymentCallback = async (req, res) => {
       { new: true }
     );
     if (updateUser) {
-      res
-        .status(200)
-        .send({ status: true, msg: "Payment Successful", updateUser });
+      res.status(200).send({
+        status: true,
+        msg: "Payment Successful",
+        data: {
+          ...updateUser,
+          razorpayPaymentId,
+          razorpayOrderId,
+          time: new Date(),
+        },
+      });
     } else {
       res.status(400).json({
         error: "Not able to save in Db",
