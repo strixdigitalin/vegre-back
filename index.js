@@ -27,6 +27,7 @@ app.use("/user", require("./Userroutes"));
 app.use("/enquiry", require("./EnquiryRoute"));
 app.use("/excel", require("./ExcelRoutes"));
 
-app.listen(process.env.PORT || 5000, () => {
+// app.listen(process.env.PORT || 5000, () => {
+app.listen(80, () => {
   console.log(`App is running at 5000 port`);
 });
