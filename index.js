@@ -20,6 +20,20 @@ mongoose
   .catch(() => console.log("FAILED TO CONNET WITH DB"));
 
 app.use(bodyParser.json());
+app.use(function (req, res, next) {
+  console.log(req._parsedUrl.path, "----<<<<<<<<<<<Current ");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 app.use(cors());
 
 app.use("/api", paymentRoute);
