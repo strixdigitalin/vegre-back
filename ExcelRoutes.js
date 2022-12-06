@@ -34,7 +34,7 @@ const checkDistrictCode = (item) => {
 const calculateRollNumber = (data) => {
   const firstDigit =
     data.Course == "Engineering" ? 1 : data.Course == "Medical" ? 2 : 3;
-  const secthird = "22";
+  const secthird = "23";
   const fourfive = findclass(data.Present_Class);
   const sixsev = checkDistrictCode(`${data.District_Code}`);
   const lastFour = fetchSrno(`${data.Sl_No}`);
