@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const User = new mongoose.Schema({
-  AADHAR_NO: { type: Number, unique: true },
+  AADHAR_NO: { type: Number },
   Roll_Number: String,
   APPEAR_DISTRICT: String,
   Class: String,
