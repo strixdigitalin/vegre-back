@@ -66,6 +66,28 @@ router.post("/upload", async (req, res) => {
     console.log(req.body);
 
     const { excelData, from, to } = req.body;
+    const options = { ordered: true };
+    const result = await excelSchema.insertMany(excelData);
+    console.log(result, "<<<this is result");
+    // await data.save();
+    if (result) {
+      res
+        .status(200)
+        .send({ success: true, message: "Data Successfully Added" });
+    } else {
+      res
+        .status(400)
+        .send({ success: false, message: "Error while uploading data" });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+router.post("/upload-result", async (req, res) => {
+  try {
+    console.log(req.body);
+
+    const { excelData, from, to } = req.body;
     // this option prevents additional documents from being inserted if one fails
     // return null;
     const options = { ordered: true };
