@@ -1,5 +1,6 @@
 const express = require("express");
 const excelSchema = require("./RegisteredCandidate");
+const ResultSchema = require("./ResultSchema");
 const {
   createOrder,
   getLogo,
@@ -83,6 +84,7 @@ router.post("/upload", async (req, res) => {
     console.log(e);
   }
 });
+
 router.post("/upload-result", async (req, res) => {
   try {
     console.log(req.body);
@@ -91,10 +93,7 @@ router.post("/upload-result", async (req, res) => {
     // this option prevents additional documents from being inserted if one fails
     // return null;
     const options = { ordered: true };
-    const result = await excelSchema.insertMany(
-      setRollNumber(excelData),
-      options
-    );
+    const result = await ResultSchema.insertMany(excelData);
     console.log(result, "<<<this is result");
     // await data.save();
     if (result) {
